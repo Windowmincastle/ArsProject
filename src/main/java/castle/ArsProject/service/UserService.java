@@ -1,19 +1,38 @@
 package castle.ArsProject.service;
 
 import castle.ArsProject.entity.UserEntity;
-import castle.ArsProject.repository.DataRepository;
+import castle.ArsProject.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
 @Service
 public class UserService {
-    private final DataRepository dataRepository;
+    private final UserRepository userRepository;
 
-    public UserService(DataRepository dataRepository) {
-        this.dataRepository = dataRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void saveUser(UserEntity userEntity) {
+        userRepository.save(userEntity);
+    }
+
+    public UserEntity getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public void deleteUser(UserEntity userEntity) {
+        userRepository.delete(userEntity);
     }
 
     public void saveData(UserEntity userEntity) {
-        dataRepository.save(userEntity);
+        userRepository.save(userEntity);
     }
+
+
+//    public void saveData(UserEntity userEntity) {
+//        UserRepository.save(userEntity);
+//    }
+
 }
 
 

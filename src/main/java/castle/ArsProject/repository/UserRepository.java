@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DataRepository extends JpaRepository<UserEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
     // 추가적인 쿼리 메서드 정의 (필요한 경우)
     // ...
+    UserEntity findByEmail(String email);
 }
 
