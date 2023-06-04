@@ -17,21 +17,19 @@ public class UserService {
     }
 
     public UserEntity getUserByEmail(String email) {
+
         return userRepository.findByEmail(email);
     }
 
     public void deleteUser(UserEntity userEntity) {
+
         userRepository.delete(userEntity);
     }
 
     public void saveData(UserEntity userEntity) {
+
         userRepository.save(userEntity);
     }
-
-
-//    public void saveData(UserEntity userEntity) {
-//        UserRepository.save(userEntity);
-//    }
 
 }
 

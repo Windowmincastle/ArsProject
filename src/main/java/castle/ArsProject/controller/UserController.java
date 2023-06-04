@@ -55,80 +55,13 @@ public class UserController {
             if (requestData.containsKey("data")) {
                 user.setData(requestData.get("data").toString());
             }
-            // 필요한 필드들을 업데이트
+
             userService.saveUser(user);
             return ResponseEntity.ok("User updated successfully");
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-//    @PutMapping("/{email}")
-//    public ResponseEntity<String> updateUser(@PathVariable String email, @RequestBody UserEntity updatedUser) {
-//        UserEntity user = userService.getUserByEmail(email);
-//        if (user != null) {
-//            if (updatedUser.getEmail() != null) {
-//                user.setEmail(updatedUser.getEmail());
-//            }
-//            if (updatedUser.getTitle() != null) {
-//                user.setTitle(updatedUser.getTitle());
-//            }
-//            if (updatedUser.getData() != null) {
-//                user.setData(updatedUser.getData());
-//            }
-//            // 필요한 필드들을 업데이트
-//            userService.saveUser(user);
-//            return ResponseEntity.ok("User updated successfully");
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-//
-//    @PutMapping("/{email}")
-//    public ResponseEntity<String> updateUser(@PathVariable String email, @RequestBody UserEntity updatedUser) {
-//        UserEntity user = userService.getUserByEmail(email);
-//        if (user != null) {
-//            user.setEmail(updatedUser.getEmail());
-//            user.setTitle(updatedUser.getTitle());
-//            user.setData(updatedUser.getData());
-//            userService.saveUser(user);
-//            return ResponseEntity.ok("User updated successfully");
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
-
-//    @PutMapping("/{email}")
-//    public ResponseEntity<String> updateUser(@PathVariable String email, @RequestBody UserEntity updatedUser) {
-//        UserEntity user = userService.getUserByEmail(email);
-//        if (user != null) {
-//            user.setEmail(updatedUser.getEmail());
-//            user.setData(updatedUser.getData());
-//            user.setTitle(updatedUser.getTitle());  // title 필드 업데이트 추가
-//
-//            userService.saveUser(user);
-//            return ResponseEntity.ok("User updated successfully");
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
-//    @PutMapping("/{email}")
-//    public ResponseEntity<String> updateUser(@PathVariable String email, @RequestBody UserEntity updatedUser) {
-//        UserEntity user = userService.getUserByEmail(email);
-//        if (user != null) {
-//            user.setEmail(updatedUser.getEmail());
-//            user.setTitle(updatedUser.getTitle());
-//            user.setData(updatedUser.getData());  // data 필드 업데이트 추가
-//            // 필요한 필드들을 업데이트
-//            userService.saveUser(user);
-//            return ResponseEntity.ok("User updated successfully");
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
     @DeleteMapping("/{email}")
     public ResponseEntity<String> deleteUser(@PathVariable String email) {
