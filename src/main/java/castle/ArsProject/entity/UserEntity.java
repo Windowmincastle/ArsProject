@@ -19,6 +19,7 @@ public class UserEntity {
 
     @Column(columnDefinition = "TEXT")
     private String data;
+
     private String title;
     private String email;
 
