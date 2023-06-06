@@ -2,9 +2,11 @@ package castle.ArsProject.service;
 
 import java.io.File;
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,7 +24,7 @@ public class FileService {
 
         for (MultipartFile file : files) {
             String originalFilename = file.getOriginalFilename();
-            String extension = originalFilename.substring(originalFilename.lastIndexOf(".")); // 파일의 확장자 추출
+            String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 
             String filename = username + extension;
 
