@@ -22,7 +22,7 @@ public class JsonController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static List<String> valueList = new ArrayList<>();
+    private List<String> valueList = new ArrayList<>(); // 인스턴스 변수로 변경
 
     @GetMapping("/jsonget")
     public ResponseEntity<List<Map<String, Object>>> getData(@RequestParam String job, @RequestParam String gender, @RequestParam String userid) {
@@ -57,6 +57,9 @@ public class JsonController {
             resultList.add(itemMap);
 
         }
+
+        // JSON 데이터 초기화
+        valueList.clear();
 
         return new ResponseEntity<>(resultList, HttpStatus.OK);
     }

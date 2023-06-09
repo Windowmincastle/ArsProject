@@ -10,6 +10,7 @@ import java.lang.reflect.Type;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,15 +39,12 @@ public class UserController {
         return ResponseEntity.ok("Data saved successfully");
     }
 
-//-----------------------------------------------
-
     @GetMapping("/{email}")
-    public ResponseEntity<Map<String, Object>> getUser(@PathVariable String email) {
+    public ResponseEntity<List<Map<String, Object>>> getUser(@PathVariable String email) {
         UserEntity user = userService.getUserByEmail(email);
         if (user != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<Map<String, String>>>() {
-            }.getType();
+            Type type = new TypeToken<List<Map<String, String>>>(){}.getType();
             List<Map<String, String>> data = gson.fromJson(user.getData(), type);
 
             Map<String, Object> responseData = new HashMap<>();
@@ -54,7 +52,10 @@ public class UserController {
             responseData.put("title", user.getTitle());
             responseData.put("email", user.getEmail());
 
-            return ResponseEntity.ok(responseData);
+            List<Map<String, Object>> responseList = new ArrayList<>();
+            responseList.add(responseData);
+
+            return ResponseEntity.ok(responseList);
         } else {
             return ResponseEntity.notFound().build();
         }
